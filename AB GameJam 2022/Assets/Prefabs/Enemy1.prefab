@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b1f980ebf576145b3553948122d309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2d: {fileID: 0}
+  rb2d: {fileID: 2352937700249892769, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
   jumpForce: 300
 --- !u!1 &1931448823773650787
 GameObject:
