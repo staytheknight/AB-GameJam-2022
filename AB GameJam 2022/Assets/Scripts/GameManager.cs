@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public float restartDelay = 0.1f;
 
+    public GameObject completeLevelUI;              // reference to the complete game object UI
+
+    // Method for when current level is failed
     public void EndGame()
     {
         if(gameHasEnded == false)                   // If game has not ended, end it
@@ -19,9 +22,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Restart()                                 // Restarts current scene
+    // Restarts current scene
+    void Restart()                                 
     {   
         // Reloads the active scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+    // Method for what happens when the level is complete
+    public void CompleteLevel()
+    {
+        completeLevelUI.SetActive(true);            // Turns on the level complete UI
     }
 }
