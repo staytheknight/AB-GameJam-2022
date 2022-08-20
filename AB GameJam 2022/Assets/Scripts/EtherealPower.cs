@@ -7,6 +7,8 @@ public class EtherealPower : MonoBehaviour
 {
 
     bool etherealOn = false;
+    [SerializeField] Tilemap gTilemap;
+    [SerializeField] Collider2D gCollider;
     [SerializeField] Tilemap iTilemap;
     [SerializeField] Collider2D iCollider;
     [SerializeField] Tilemap dTilemap;
@@ -25,20 +27,39 @@ public class EtherealPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("EtherealPower"))
+        if (Input.GetButton("EtherealPower"))
         {
-            // TODO : Reduce Tilemap opacity (maybe to 50%) (probably using the setColor parameter ?
-            // https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html
+            //When button pressed and held, colliders disabled.
             iCollider.enabled = false;
             dCollider.enabled = false;
-        } 
+            gCollider.enabled = false;
 
-        else if (Input.GetButtonUp("EtherealPower"))
-        {   
-            
-            // TODO : Revert tilemap opacity changes
+            if (Input.GetButtonDown("EtherealPower"))
+            {
+                //When button initially pressed, set colour transparancy to 0.5 less than current transparency
+                gTilemap.color = (Vector4)gTilemap.color - new Vector4(0f, 0f, 0f, gTilemap.color.a - 0.5f);
+                iTilemap.color = (Vector4)iTilemap.color - new Vector4(0f, 0f, 0f, iTilemap.color.a - 0.5f);
+                dTilemap.color = (Vector4)dTilemap.color - new Vector4(0f, 0f, 0f, dTilemap.color.a - 0.5f);
+
+            }
+
+                } 
+
+        else 
+        {
+            if (Input.GetButtonUp("EtherealPower"))
+            {
+                //When button released, set colour transparency to 0.5 more than current transparency
+                gTilemap.color = (Vector4)gTilemap.color + new Vector4(0f, 0f, 0f, gTilemap.color.a + 0.5f);
+                iTilemap.color = (Vector4)iTilemap.color + new Vector4(0f, 0f, 0f, iTilemap.color.a + 0.5f);
+                dTilemap.color = (Vector4)dTilemap.color + new Vector4(0f, 0f, 0f, dTilemap.color.a + 0.5f);
+            }
+
+            //When button released, colliders re-enabled.
             iCollider.enabled = true;
             dCollider.enabled = true;
+            gCollider.enabled = true;
+
         }
     }
 }
