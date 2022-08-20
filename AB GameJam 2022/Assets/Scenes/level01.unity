@@ -800,9 +800,9 @@ MonoBehaviour:
   controller: {fileID: 204067428}
   playerMovement: {fileID: 204067427}
   player: {fileID: 204067425}
-  thrust: 0
-  rangeMin: 0
-  rangeMax: 0
+  thrust: 20
+  rangeMin: -50
+  rangeMax: 50
 --- !u!114 &204067431
 MonoBehaviour:
   m_ObjectHideFlags: 0

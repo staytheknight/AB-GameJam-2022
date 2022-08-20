@@ -29,11 +29,11 @@ public class PlayerCollision : MonoBehaviour
         if (collision.collider.tag == "Enemy")
         {
             // Launches player
-            controller.enabled = false;
-            playerMovement.enabled = false;
-            transform.position = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));
-            player.AddForce(transform.position * thrust);
-
+            //controller.enabled = false;
+            //playerMovement.enabled = false;
+            transform.position = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  // THIS LINE IS CAUSING ISSUES
+            //player.AddForce(transform.position * thrust);
+            
             FindObjectOfType<GameManager>().EndGame();
         }
     }
