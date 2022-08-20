@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 0.1f;
 
     public GameObject completeLevelUI;              // reference to the complete game object UI
+    public GameObject failedLevelUI;
 
     // Method for when current level is failed
     public void EndGame()
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
         if(gameHasEnded == false)                   // If game has not ended, end it
         {
             gameHasEnded = true;
-            Debug.Log("GAME OVER");
+            failedLevelUI.SetActive(true);
             Invoke("Restart", restartDelay);       // Invokes Restart method
         }
     }
