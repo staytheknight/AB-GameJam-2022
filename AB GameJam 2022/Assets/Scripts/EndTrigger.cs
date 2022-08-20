@@ -9,11 +9,11 @@ public class EndTrigger : MonoBehaviour
     public float nextLevelDelay = 1.3f;
 
 
+
     // When the object is triggered (through collision) 
     void OnTriggerEnter2D()
     {
 
-        Debug.Log("Level Finished");
         gameManager.CompleteLevel();            //Call the complete level function of the game manager
 
         Invoke("LoadNextLevel", nextLevelDelay);  //Calls the load the next scene method after a delay
