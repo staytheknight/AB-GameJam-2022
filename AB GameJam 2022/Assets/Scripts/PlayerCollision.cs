@@ -28,5 +28,10 @@ public class PlayerCollision : MonoBehaviour
         {
             FindObjectOfType<GameManager>().EndGame();
         }
+
+        if (collision.collider.tag == "Enemy")
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 }
