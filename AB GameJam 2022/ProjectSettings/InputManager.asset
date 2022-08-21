@@ -492,7 +492,7 @@ InputManager:
     negativeButton: 
     positiveButton: j
     altNegativeButton: 
-    altPositiveButton: joystick button 5
+    altPositiveButton: joystick button 6
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -508,7 +508,7 @@ InputManager:
     negativeButton: 
     positiveButton: k
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 7
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -524,7 +524,7 @@ InputManager:
     negativeButton: 
     positiveButton: ;
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 5
     gravity: 0
     dead: 0
     sensitivity: 0
@@ -540,7 +540,7 @@ InputManager:
     negativeButton: 
     positiveButton: l
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 4
     gravity: 0
     dead: 0
     sensitivity: 0
