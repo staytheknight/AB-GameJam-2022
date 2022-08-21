@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
     bool switchKill = false;
+    public bool levelOne = false;                   // Bandaid patch to toggle if the manager is on the first level or not
 
     public float restartDelay = 0.1f;
 
     public GameObject completeLevelUI;              // reference to the complete game object UI
-    public GameObject failedLevelUI;
+    public GameObject failedLevelUI;                
 
     [SerializeField] GameObject switchKillOnIcon;
     [SerializeField] GameObject switchKillOffIcon;
@@ -44,16 +45,19 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButton("InvertKill"))
-        {
-            switchKillOnIcon.SetActive(true);
-            switchKillOffIcon.SetActive(false);
+        if (!levelOne) { // If it's not level 1 use this 
+            if (Input.GetButton("InvertKill"))
+            {
+                switchKillOnIcon.SetActive(true);
+                switchKillOffIcon.SetActive(false);
 
+            }
+            else
+            {
+                switchKillOnIcon.SetActive(false);
+                switchKillOffIcon.SetActive(true);
+            }
         }
-        else
-        {
-            switchKillOnIcon.SetActive(false);
-            switchKillOffIcon.SetActive(true);
-        }
+        
     }
 }

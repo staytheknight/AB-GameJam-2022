@@ -1777,6 +1777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99651e74596080744b52e422830514bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelOne: 1
   restartDelay: 0.8
   completeLevelUI: {fileID: 776921500}
   failedLevelUI: {fileID: 1937754938}
