@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 300
-  m_CrouchSpeed: 0.36
+  m_CrouchSpeed: 0.75
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -917,12 +917,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dafb9a3553a5440aeba5bc6119f769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  playerMovement: {fileID: 0}
-  player: {fileID: 0}
-  boundary: {fileID: 0}
-  rangeMin: -50
-  rangeMax: 50
+  controller: {fileID: 204067428}
+  playerMovement: {fileID: 204067427}
+  player: {fileID: 204067425}
+  boundary: {fileID: 1193877367}
+  rangeMin: -300
+  rangeMax: 300
 --- !u!114 &204067431
 MonoBehaviour:
   m_ObjectHideFlags: 0
