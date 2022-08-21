@@ -8,10 +8,24 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animator;
 
 	public float runSpeed = 40f;
+	private Rigidbody2D m_Rigidbody2D;
+	private CharacterController2D m_CharacterController2D;
+
+	//Sets gravity state, whether gravity has been updated this frame.
+	public bool isGravityInverted = false;
+	private bool gravityUpdatedThisFrame = false;
+
+	private bool m_FacingUp = true;  // For determining whether player is facing up or down.
 
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+
+	private void Awake()
+	{
+		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_CharacterController2D = GetComponent<CharacterController2D>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -26,7 +40,41 @@ public class PlayerMovement : MonoBehaviour {
 			jump = true;
 		}
 
-        /*if (Input.GetButtonDown("Crouch"))
+		//If Gravity invert has been toggled, gravity is currently normal, gravity has not yet been updated this frame, and character is on the floor, invert gravity.
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true)
+        {
+			Debug.Log("Beginning Invert Gravity");
+			isGravityInverted = true;
+			gravityUpdatedThisFrame = true;
+		}
+
+		//If Gravity invert has been toggled, gravity is currently inverted, gravity has not yet been updated this frame, and character is on the ceiling, put gravity back to normal.
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true)
+        {
+			isGravityInverted = false;
+			gravityUpdatedThisFrame = true;
+		}
+
+		// If Gravity is inverted, flip gravity scale. If not inverted, leave gravity scale to 1.
+		if (isGravityInverted)
+			m_Rigidbody2D.gravityScale = -1;
+		else
+			m_Rigidbody2D.gravityScale = 1;
+
+		// If gravity is up and the player is facing up...
+		if (isGravityInverted && m_FacingUp)
+		{
+			// ... Invert the player.
+			Invert();
+		}
+		// Otherwise if gravity is down and the player is facing down...
+		else if (!isGravityInverted && !m_FacingUp)
+		{
+			// ... Invert the player.
+			Invert();
+		}
+
+		/*if (Input.GetButtonDown("Crouch"))
 		{
 			    crouch = true;
 		} 
@@ -36,6 +84,7 @@ public class PlayerMovement : MonoBehaviour {
 		    crouch = false;
 		}*/
 
+		gravityUpdatedThisFrame = false;
 	}
 
 	void FixedUpdate ()
@@ -43,5 +92,15 @@ public class PlayerMovement : MonoBehaviour {
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
+	}
+
+	private void Invert()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingUp = !m_FacingUp;
+
+		SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+		sprite.flipY = !sprite.flipY;
+
 	}
 }

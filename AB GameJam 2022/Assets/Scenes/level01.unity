@@ -4717,6 +4717,14 @@ PrefabInstance:
       propertyPath: iCollider
       value: 
       objectReference: {fileID: 1185588718}
+    - target: {fileID: 3912954754204274655, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: m_CrouchSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3912954754204274656, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.000000001
+      objectReference: {fileID: 0}
     - target: {fileID: 3912954754204274658, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
       propertyPath: m_RootOrder
       value: 3
