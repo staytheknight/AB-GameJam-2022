@@ -13,10 +13,13 @@ public class EndTrigger : MonoBehaviour
     // When the object is triggered (through collision) 
     void OnTriggerEnter2D()
     {
+        if (!gameManager.gameHasEnded)              // If the player has not failed, go onto the next level
+        {
+            gameManager.CompleteLevel();            //Call the complete level function of the game manager
+            gameManager.gameHasEnded = true;        // Sets game ended to true so the fail message does not show
+            Invoke("LoadNextLevel", nextLevelDelay);  //Calls the load the next scene method after a delay
+        }
 
-        gameManager.CompleteLevel();            //Call the complete level function of the game manager
-
-        Invoke("LoadNextLevel", nextLevelDelay);  //Calls the load the next scene method after a delay
 
     }
 
