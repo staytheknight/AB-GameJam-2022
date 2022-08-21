@@ -56,7 +56,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         // If collision is detected with boundaries and Wraparound is disabled, end game.
-        if (collision.collider.tag == "Boundaries" && !Input.GetButton("Wraparound"))
+        if (collision.collider.tag == "Boundaries" && (!Input.GetButton("Wraparound") || !powerUps.hasWraparoundPower))
         {
             Destroy(bottomBoundary);
             Destroy(topBoundary);
@@ -64,7 +64,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         //If collision is detected with boundaries and Wraparound is enabled, wrap to other side.
-        if (collision.collider.tag == "Boundaries" && Input.GetButton("Wraparound"))
+        if (collision.collider.tag == "Boundaries" && Input.GetButton("Wraparound") && powerUps.hasWraparoundPower)
         {
             //Wrap to bottom if gravity inverted
             if (playerMovement.isGravityInverted)
@@ -111,7 +111,19 @@ public class PlayerCollision : MonoBehaviour
             Destroy(power);
         }
 
+        if (collision.collider.tag == "Wraparound")
+        {
+            powerUps.hasWraparoundPower = true;
+            GameObject power = collision.collider.gameObject;
+            Destroy(power);
+        }
 
+        if (collision.collider.tag == "InvertGravity")
+        {
+            powerUps.hasGravityPower = true;
+            GameObject power = collision.collider.gameObject;
+            Destroy(power);
+        }
 
     }
 

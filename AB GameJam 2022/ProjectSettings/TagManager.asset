@@ -12,6 +12,8 @@ TagManager:
   - Goals
   - EtherealPlatform
   - InvertKill
+  - Wraparound
+  - InvertGravity
   layers:
   - Default
   - TransparentFX
