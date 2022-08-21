@@ -54,8 +54,10 @@ public class PlayerCollision : MonoBehaviour
         // If collision is detected with boundaries and Wraparound is disabled, end game.
         if (collision.collider.tag == "Boundaries" && !Input.GetButton("Wraparound"))
         {
-            Destroy(bottomBoundary);
-            Destroy(topBoundary);
+            // Disables colliders of boundary boxes to let player pass through when hit
+            // DO NOT SET TO DESTROY WILL CREATE ERRORS
+            bottomBoundary.GetComponent<BoxCollider2D>().enabled = false;
+            topBoundary.GetComponent<BoxCollider2D>().enabled = false;
             FindObjectOfType<GameManager>().EndGame();
         }
 
