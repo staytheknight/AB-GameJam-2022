@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody2D m_Rigidbody2D;
 	private CharacterController2D m_CharacterController2D;
 
+	//Sets gravity state, whether gravity has been updated this frame.
 	public bool isGravityInverted = false;
 	private bool gravityUpdatedThisFrame = false;
 
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 			jump = true;
 		}
 
+		//If Gravity invert has been toggled, gravity is currently normal, gravity has not yet been updated this frame, and character is on the floor, invert gravity.
 		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true)
         {
 			Debug.Log("Beginning Invert Gravity");
@@ -46,13 +48,14 @@ public class PlayerMovement : MonoBehaviour {
 			gravityUpdatedThisFrame = true;
 		}
 
+		//If Gravity invert has been toggled, gravity is currently inverted, gravity has not yet been updated this frame, and character is on the ceiling, put gravity back to normal.
 		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true)
         {
-			Debug.Log("Ending Invert Gravity");
 			isGravityInverted = false;
 			gravityUpdatedThisFrame = true;
 		}
 
+		// If Gravity is inverted, flip gravity scale. If not inverted, leave gravity scale to 1.
 		if (isGravityInverted)
 			m_Rigidbody2D.gravityScale = -1;
 		else
