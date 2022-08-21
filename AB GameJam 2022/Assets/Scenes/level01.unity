@@ -4523,6 +4523,14 @@ PrefabInstance:
       propertyPath: boundary
       value: 
       objectReference: {fileID: 531968110}
+    - target: {fileID: 3912954754204274652, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: topBoundary
+      value: 
+      objectReference: {fileID: 1344989758}
+    - target: {fileID: 3912954754204274652, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: bottomBoundary
+      value: 
+      objectReference: {fileID: 531968110}
     - target: {fileID: 3912954754204274653, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
       propertyPath: dTilemap
       value: 

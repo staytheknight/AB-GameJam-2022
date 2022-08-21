@@ -9,9 +9,24 @@ public class PlayerCollision : MonoBehaviour
     public CharacterController2D controller;
     public PlayerMovement playerMovement;
     public Rigidbody2D player;
-    public GameObject boundary;
+    public GameObject bottomBoundary;
+    public GameObject topBoundary;
     public float rangeMin = -400f;
     public float rangeMax = 400f;
+
+    private void Update()
+    {
+        if (playerMovement.isGravityInverted)
+        {
+            topBoundary.SetActive(true);
+            bottomBoundary.SetActive(false);
+        }
+        else
+        {
+            topBoundary.SetActive(false);
+            bottomBoundary.SetActive(true);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
@@ -24,7 +39,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.collider.tag == "Boundaries")
         {
-            Destroy(boundary);
+            Destroy(bottomBoundary);
+            Destroy(topBoundary);
             FindObjectOfType<GameManager>().EndGame();
         }
 
