@@ -21,10 +21,13 @@ public class PlayerMovement : MonoBehaviour {
 	bool jump = false;
 	bool crouch = false;
 
+	private PowerUps powerUps;
+
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_CharacterController2D = GetComponent<CharacterController2D>();
+		powerUps = FindObjectOfType<PowerUps>();
 	}
 
 	// Update is called once per frame
@@ -41,14 +44,14 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		//If Gravity invert has been toggled, gravity is currently normal, gravity has not yet been updated this frame, and character is on the floor, invert gravity.
-		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true)
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true && powerUps.hasGravityPower)
         {
 			isGravityInverted = true;
 			gravityUpdatedThisFrame = true;
 		}
 
 		//If Gravity invert has been toggled, gravity is currently inverted, gravity has not yet been updated this frame, and character is on the ceiling, put gravity back to normal.
-		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true)
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true && powerUps.hasGravityPower)
         {
 			isGravityInverted = false;
 			gravityUpdatedThisFrame = true;
