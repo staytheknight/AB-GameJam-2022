@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicToggle: {fileID: 8485114836236271594}
   rb2d: {fileID: 3912954755415101088, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
-  jumpForce: 300
+  jumpForce: 500
 --- !u!1 &6936746180830708975
 GameObject:
   m_ObjectHideFlags: 0

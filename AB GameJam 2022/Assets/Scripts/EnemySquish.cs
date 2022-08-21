@@ -8,7 +8,7 @@ public class EnemySquish : MonoBehaviour
     public MusicToggle musicToggle;
 
     [SerializeField] Rigidbody2D rb2d;
-    [SerializeField] float jumpForce;
+    [SerializeField] float jumpForce = 300f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
