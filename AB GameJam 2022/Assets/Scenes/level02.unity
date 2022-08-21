@@ -1188,6 +1188,7 @@ MonoBehaviour:
   controller: {fileID: 204067428}
   animator: {fileID: 0}
   runSpeed: 15
+  isGravityInverted: 0
 --- !u!114 &204067428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1211,8 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 707666010}
   m_CeilingCheck: {fileID: 1577772631}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
+  m_Ceilinged: 0
 --- !u!61 &204067429
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2715,6 +2718,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859217795}
     m_Modifications:
+    - target: {fileID: 6936746180395554366, guid: fa7a6392933dd084eb534876904738cf, type: 3}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 204067425}
     - target: {fileID: 6936746180871440433, guid: fa7a6392933dd084eb534876904738cf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4657,6 +4664,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859217795}
     m_Modifications:
+    - target: {fileID: 6936746180395554366, guid: fa7a6392933dd084eb534876904738cf, type: 3}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 204067425}
     - target: {fileID: 6936746180871440433, guid: fa7a6392933dd084eb534876904738cf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5924,6 +5935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859217795}
     m_Modifications:
+    - target: {fileID: 6936746180395554366, guid: fa7a6392933dd084eb534876904738cf, type: 3}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 204067425}
     - target: {fileID: 6936746180871440433, guid: fa7a6392933dd084eb534876904738cf, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6238,6 +6253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 859217795}
     m_Modifications:
+    - target: {fileID: 6936746180395554366, guid: fa7a6392933dd084eb534876904738cf, type: 3}
+      propertyPath: rb2d
+      value: 
+      objectReference: {fileID: 204067425}
     - target: {fileID: 6936746180871440433, guid: fa7a6392933dd084eb534876904738cf, type: 3}
       propertyPath: m_RootOrder
       value: 3
