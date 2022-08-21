@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4890928783785484252}
   - component: {fileID: 6858968360813152018}
   - component: {fileID: 8990521512693314901}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: music_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 6936746180395554365}
   - component: {fileID: 6936746180395554367}
   - component: {fileID: 6936746180395554366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ceiling_Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,8 +131,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936746180395554364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.293, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.015859, y: 0.293, z: 0}
+  m_LocalScale: {x: 1.0390625, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6936746180871440433}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 6936746180830708944}
   - component: {fileID: 6936746180830708946}
   - component: {fileID: 6936746180830708945}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: music_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 6936746180871440589}
   - component: {fileID: 6936746180871440588}
   - component: {fileID: 8485114836236271594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -447,6 +447,8 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 6936746181389181366}
   m_CeilingCheck: {fileID: 6936746180395554365}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
+  m_Ceilinged: 0
 --- !u!114 &6936746180871440588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6936746180871440589}
-  switchTime: 120
   horizontalMove: 20
 --- !u!114 &8485114836236271594
 MonoBehaviour:
@@ -477,6 +478,7 @@ MonoBehaviour:
   rightMusic: {fileID: 6936746182234650003}
   leftMusic: {fileID: 6936746180830708975}
   topMusic: {fileID: 5308524173640497548}
+  invertedEnemy: 0
 --- !u!1 &6936746181389181365
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6936746181389181366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground_Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +521,7 @@ GameObject:
   - component: {fileID: 6936746181865091036}
   - component: {fileID: 6936746181865091038}
   - component: {fileID: 6936746181865091037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boombox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +620,7 @@ GameObject:
   - component: {fileID: 6936746182234650004}
   - component: {fileID: 6936746182234650006}
   - component: {fileID: 6936746182234650005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: music_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

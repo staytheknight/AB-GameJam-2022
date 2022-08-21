@@ -8,25 +8,34 @@ public class MusicToggle : MonoBehaviour
     [SerializeField] GameObject rightMusic;
     [SerializeField] GameObject leftMusic;
     [SerializeField] GameObject topMusic;
+    [SerializeField] bool invertedEnemy;
 
     // Update is called once per frame
     void Update()
-    {   
-        // If invert kill toggle is triggered 
-        if (Input.GetButton("InvertKill"))
-        {
-            // Turn on top music sprite, turn off left and right sprite
-            topMusic.SetActive(true);
-            rightMusic.SetActive(false);
-            leftMusic.SetActive(false);
+    {
 
+        if (Input.GetButtonDown("InvertKill"))
+        {
+            invertedEnemy = !invertedEnemy;
         }
-        else
-        {   
-            // if the button is not pressed, turn off top music, and on left and right
+        if (Input.GetButtonUp("InvertKill"))
+        {
+            invertedEnemy = !invertedEnemy;
+        }
+
+        if (!invertedEnemy)
+        {
             topMusic.SetActive(false);
             rightMusic.SetActive(true);
             leftMusic.SetActive(true);
         }
+
+        if (invertedEnemy)
+        {
+            topMusic.SetActive(true);
+            rightMusic.SetActive(false);
+            leftMusic.SetActive(false);
+        }
+
     }
 }

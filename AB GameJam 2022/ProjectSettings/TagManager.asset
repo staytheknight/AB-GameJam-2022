@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Movement Restrictors
   - Interactables
+  - Goals
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Movement Restrictors
-  - 
-  - 
+  - Enemies
+  - Goals
   - 
   - 
   - 
