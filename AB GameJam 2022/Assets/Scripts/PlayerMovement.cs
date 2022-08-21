@@ -21,7 +21,11 @@ public class PlayerMovement : MonoBehaviour {
 	bool jump = false;
 	bool crouch = false;
 
+    // Powerups
 	private PowerUps powerUps;
+    // Icons for Gravity powerup controls
+    [SerializeField] GameObject gravityIconOn;
+    [SerializeField] GameObject gravityIconOff;
 
 	private void Awake()
 	{
@@ -47,18 +51,43 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true && powerUps.hasGravityPower)
         {
 			isGravityInverted = true;
-			gravityUpdatedThisFrame = true;
-		}
+			gravityUpdatedThisFrame = true;            
+        }
 
 		//If Gravity invert has been toggled, gravity is currently inverted, gravity has not yet been updated this frame, and character is on the ceiling, put gravity back to normal.
 		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true && powerUps.hasGravityPower)
         {
 			isGravityInverted = false;
 			gravityUpdatedThisFrame = true;
-		}
+                        
+        }
 
-		// If Gravity is inverted, flip gravity scale. If not inverted, leave gravity scale to 1.
-		if (isGravityInverted)
+
+        // Checks every frame for conditions to display proper controller icon
+        if (isGravityInverted && powerUps.hasGravityPower)
+        {
+
+            gravityIconOn.SetActive(true);
+            gravityIconOff.SetActive(false);
+
+        }
+        else if (!isGravityInverted && powerUps.hasGravityPower)
+        {
+
+            gravityIconOn.SetActive(false);
+            gravityIconOff.SetActive(true);
+        }
+        else
+        {
+            gravityIconOn.SetActive(false);
+            gravityIconOff.SetActive(false);
+        }
+
+
+
+
+        // If Gravity is inverted, flip gravity scale. If not inverted, leave gravity scale to 1.
+        if (isGravityInverted)
 			m_Rigidbody2D.gravityScale = -1;
 		else
 			m_Rigidbody2D.gravityScale = 1;

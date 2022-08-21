@@ -9,4 +9,31 @@ public class PowerUps : MonoBehaviour
     public bool hasWraparoundPower = false;
     public bool hasGravityPower = false;
 
+    [SerializeField] GameObject wrapAroundIconOn;
+    [SerializeField] GameObject wrapAroundIconOff;
+
+
+    private void Update()
+    {
+        if (hasWraparoundPower)
+        {
+            if(Input.GetButton("Wraparound"))
+            {
+                wrapAroundIconOn.SetActive(true);
+                wrapAroundIconOff.SetActive(false);
+
+            } else if (!Input.GetButton("Wraparound")) {
+
+                wrapAroundIconOn.SetActive(false);
+                wrapAroundIconOff.SetActive(true);
+
+            } else {
+
+                wrapAroundIconOn.SetActive(false);
+                wrapAroundIconOff.SetActive(false);
+            }
+        }
+
+    }
+
 }

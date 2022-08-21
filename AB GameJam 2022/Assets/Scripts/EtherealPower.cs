@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class EtherealPower : MonoBehaviour
 {
-    private PowerUps powerUps;
+    public PowerUps powerUps;
     bool etherealOn = false;
     [SerializeField] Tilemap gTilemap;
     [SerializeField] Collider2D gCollider;
