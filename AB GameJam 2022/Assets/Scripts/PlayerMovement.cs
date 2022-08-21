@@ -9,6 +9,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float runSpeed = 40f;
 	private Rigidbody2D m_Rigidbody2D;
+	private CharacterController2D m_CharacterController2D;
+
+	public bool isGravityInverted = false;
+	private bool gravityUpdatedThisFrame = false;
+
+	private bool m_FacingUp = true;  // For determining whether player is facing up or down.
 
 	float horizontalMove = 0f;
 	bool jump = false;
@@ -17,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_CharacterController2D = GetComponent<CharacterController2D>();
 	}
 
 	// Update is called once per frame
@@ -32,17 +39,39 @@ public class PlayerMovement : MonoBehaviour {
 			jump = true;
 		}
 
-		if (Input.GetButton("InvertGravity"))
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true)
         {
+			Debug.Log("Beginning Invert Gravity");
+			isGravityInverted = true;
+			gravityUpdatedThisFrame = true;
+		}
+
+		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == true && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Ceilinged == true)
+        {
+			Debug.Log("Ending Invert Gravity");
+			isGravityInverted = false;
+			gravityUpdatedThisFrame = true;
+		}
+
+		if (isGravityInverted)
 			m_Rigidbody2D.gravityScale = -1;
-		}
-
-		if (!Input.GetButton("InvertGravity"))
-        {
+		else
 			m_Rigidbody2D.gravityScale = 1;
+
+		// If gravity is up and the player is facing up...
+		if (isGravityInverted && m_FacingUp)
+		{
+			// ... Invert the player.
+			Invert();
+		}
+		// Otherwise if gravity is down and the player is facing down...
+		else if (!isGravityInverted && !m_FacingUp)
+		{
+			// ... Invert the player.
+			Invert();
 		}
 
-        /*if (Input.GetButtonDown("Crouch"))
+		/*if (Input.GetButtonDown("Crouch"))
 		{
 			    crouch = true;
 		} 
@@ -52,6 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 		    crouch = false;
 		}*/
 
+		gravityUpdatedThisFrame = false;
 	}
 
 	void FixedUpdate ()
@@ -59,5 +89,15 @@ public class PlayerMovement : MonoBehaviour {
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
+	}
+
+	private void Invert()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingUp = !m_FacingUp;
+
+		SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+		sprite.flipY = !sprite.flipY;
+
 	}
 }

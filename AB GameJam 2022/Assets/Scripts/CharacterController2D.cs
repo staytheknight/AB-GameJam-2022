@@ -16,12 +16,14 @@ public class CharacterController2D : MonoBehaviour
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	public bool m_Ceilinged;
 	private Rigidbody2D m_Rigidbody2D;
+	private PlayerMovement m_PlayerMovement;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_PlayerMovement = GetComponent<PlayerMovement>();
 	}
 
 
@@ -102,17 +104,17 @@ public class CharacterController2D : MonoBehaviour
 				Flip();
 			}
 		}
-		// If the player should jump...
-		if (m_Grounded && jump && !Input.GetButton("InvertGravity"))
+		// If the player should jump and gravity is not inverted...
+		if (m_Grounded && jump && !m_PlayerMovement.isGravityInverted)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 		// If Jumping and gravity inverted, add negative vertical force to player.
-		else if (m_Ceilinged && jump && Input.GetButton("InvertGravity"))
+		else if (m_Ceilinged && jump && m_PlayerMovement.isGravityInverted)
 		{
-			// Add a vertical force to the player.
+			// Add a negative vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, -1 * m_JumpForce));
 		}
