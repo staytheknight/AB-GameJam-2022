@@ -12,8 +12,9 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-	private bool m_Grounded;            // Whether or not the player is grounded.
+	public bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+	public bool m_Ceilinged;
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
@@ -35,6 +36,18 @@ public class CharacterController2D : MonoBehaviour
 		{
 			if (colliders[i].gameObject != gameObject)
 				m_Grounded = true;
+		}
+
+
+		m_Ceilinged = false;
+
+		// The player is ceilinged if a circlecast to the ceilingcheck position hits anything designated as ceiling
+		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
+		Collider2D[] colliders2 = Physics2D.OverlapCircleAll(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround);
+		for (int i = 0; i < colliders2.Length; i++)
+		{
+			if (colliders2[i].gameObject != gameObject)
+				m_Ceilinged = true;
 		}
 	}
 
@@ -90,11 +103,18 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		if (m_Grounded && jump && !Input.GetButton("InvertGravity"))
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+		}
+		// If Jumping and gravity inverted, add negative vertical force to player.
+		else if (m_Ceilinged && jump && Input.GetButton("InvertGravity"))
+		{
+			// Add a vertical force to the player.
+			m_Grounded = false;
+			m_Rigidbody2D.AddForce(new Vector2(0f, -1 * m_JumpForce));
 		}
 	}
 

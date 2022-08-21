@@ -8,10 +8,16 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animator;
 
 	public float runSpeed = 40f;
+	private Rigidbody2D m_Rigidbody2D;
 
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+
+	private void Awake()
+	{
+		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -24,6 +30,16 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetButtonDown("Jump"))
 		{
 			jump = true;
+		}
+
+		if (Input.GetButton("InvertGravity"))
+        {
+			m_Rigidbody2D.gravityScale = -1;
+		}
+
+		if (!Input.GetButton("InvertGravity"))
+        {
+			m_Rigidbody2D.gravityScale = 1;
 		}
 
         /*if (Input.GetButtonDown("Crouch"))
