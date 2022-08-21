@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
+    bool switchKill = false;
 
     public float restartDelay = 0.1f;
 
     public GameObject completeLevelUI;              // reference to the complete game object UI
     public GameObject failedLevelUI;
+
+    [SerializeField] GameObject switchKillOnIcon;
+    [SerializeField] GameObject switchKillOffIcon;
 
     // Method for when current level is failed
     public void EndGame()
@@ -36,5 +40,20 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         completeLevelUI.SetActive(true);            // Turns on the level complete UI
+    }
+
+    public void Update()
+    {
+        if (Input.GetButton("InvertKill"))
+        {
+            switchKillOnIcon.SetActive(true);
+            switchKillOffIcon.SetActive(false);
+
+        }
+        else
+        {
+            switchKillOnIcon.SetActive(false);
+            switchKillOffIcon.SetActive(true);
+        }
     }
 }

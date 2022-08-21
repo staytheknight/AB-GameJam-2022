@@ -7,6 +7,7 @@ public class EnemySquish : MonoBehaviour
 
     [SerializeField] Rigidbody2D rb2d;
     [SerializeField] float jumpForce;
+    bool switchKill = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -25,4 +26,5 @@ public class EnemySquish : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
         }
     }
+
 }
