@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
 
-    public MusicToggle musicToggle;
+    public MusicToggle musicToggle;                    // Scripting object that controls music note visuals
 
     // Used to move the player upon fail
     public CharacterController2D controller;
@@ -39,27 +39,26 @@ public class PlayerCollision : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        if (collision.collider.tag == "Boundaries")
+        // If collision is detected with boundaries and Wraparound is disabled, end game.
+        if (collision.collider.tag == "Boundaries" && !Input.GetButton("Wraparound"))
         {
             Destroy(bottomBoundary);
             Destroy(topBoundary);
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        /* OLD CODE FOR INVERT KILL -- USES BUTTONS INSTEAD OF TOGGLE -- KEPT JUST IN CASE
-        //If enemy collision happens and invert kill deactivated
-        if (collision.collider.tag == "Enemy" && !Input.GetButton("InvertKill"))
+        //If collision is detected with boundaries and Wraparound is enabled, wrap to other side.
+        if (collision.collider.tag == "Boundaries" && Input.GetButton("Wraparound"))
         {
-            PlayerLaunch();
-            FindObjectOfType<GameManager>().EndGame();
+            //Wrap to bottom if gravity inverted
+            if (playerMovement.isGravityInverted)
+                player.transform.position = new Vector3(player.transform.position.x, bottomBoundary.transform.position.y, player.transform.position.z);
+            //Wrap to top if gravity normal.
+            else
+                player.transform.position = new Vector3(player.transform.position.x, topBoundary.transform.position.y, player.transform.position.z);
         }
-        //If enemy collision happens and invert kill activated
-        else if (collision.collider.tag == "Enemy" && Input.GetButton("InvertKill"))
-        {
-        //Get collided enemy game object and destroy it.
-            GameObject enemy = collision.collider.gameObject;
-            Destroy(enemy);
-        }*/
+
+  
 
         if (collision.collider.tag == "Enemy")
         {   
@@ -91,7 +90,7 @@ public class PlayerCollision : MonoBehaviour
         // Launches player
         controller.enabled = false;
         playerMovement.enabled = false;
-        Vector2 launchVector = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  // THIS LINE IS CAUSING ISSUES
+        Vector2 launchVector = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  
         player.AddForce(launchVector);        
     }
 }
