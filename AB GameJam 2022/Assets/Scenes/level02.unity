@@ -1530,6 +1530,7 @@ MonoBehaviour:
   topBoundary: {fileID: 212466646}
   rangeMin: -300
   rangeMax: 300
+  playerTransform: {fileID: 204067424}
 --- !u!114 &204067431
 MonoBehaviour:
   m_ObjectHideFlags: 0
