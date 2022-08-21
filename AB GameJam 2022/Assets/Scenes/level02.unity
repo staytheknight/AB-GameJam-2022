@@ -3022,6 +3022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99651e74596080744b52e422830514bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameHasEnded: 0
   levelOne: 0
   restartDelay: 0.8
   completeLevelUI: {fileID: 776921500}
@@ -7675,6 +7676,14 @@ PrefabInstance:
       propertyPath: bottomBoundary
       value: 
       objectReference: {fileID: 1193877367}
+    - target: {fileID: 3912954754204274653, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: onIcon
+      value: 
+      objectReference: {fileID: 1150430557}
+    - target: {fileID: 3912954754204274653, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
+      propertyPath: offIcon
+      value: 
+      objectReference: {fileID: 653739811}
     - target: {fileID: 3912954754204274653, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
       propertyPath: dTilemap
       value: 
