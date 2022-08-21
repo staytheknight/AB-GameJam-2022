@@ -118,7 +118,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.22374439, y: 0.27338892}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.000000001
 --- !u!61 &3912954754204274657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -181,6 +181,7 @@ MonoBehaviour:
   controller: {fileID: 3912954754204274655}
   animator: {fileID: 0}
   runSpeed: 15
+  isGravityInverted: 0
 --- !u!114 &3912954754204274655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,8 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 3912954754405442280}
   m_CeilingCheck: {fileID: 3912954755624836031}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
+  m_Ceilinged: 0
 --- !u!114 &3912954754204274652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +242,8 @@ MonoBehaviour:
   iCollider: {fileID: 0}
   dTilemap: {fileID: 0}
   dCollider: {fileID: 0}
+  onIcon: {fileID: 0}
+  offIcon: {fileID: 0}
 --- !u!1 &3912954754405442281
 GameObject:
   m_ObjectHideFlags: 0
