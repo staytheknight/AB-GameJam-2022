@@ -14,6 +14,9 @@ public class EtherealPower : MonoBehaviour
     [SerializeField] Tilemap dTilemap;
     [SerializeField] Collider2D dCollider;
 
+    [SerializeField] GameObject onIcon;
+    [SerializeField] GameObject offIcon;
+
 
     private void Start()
     {
@@ -42,8 +45,8 @@ public class EtherealPower : MonoBehaviour
                 dTilemap.color = (Vector4)dTilemap.color - new Vector4(0f, 0f, 0f, dTilemap.color.a - 0.5f);
 
             }
-
-                } 
+            etherealOn = true;
+        } 
 
         else 
         {
@@ -60,6 +63,18 @@ public class EtherealPower : MonoBehaviour
             dCollider.enabled = true;
             gCollider.enabled = true;
 
+            etherealOn = false;
+        }
+
+        if(etherealOn){
+
+            onIcon.SetActive(true);
+            offIcon.SetActive(false);
+
+        } else {
+
+            onIcon.SetActive(false);
+            offIcon.SetActive(true);
         }
     }
 }
