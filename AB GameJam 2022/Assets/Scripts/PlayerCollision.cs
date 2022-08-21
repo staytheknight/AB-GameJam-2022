@@ -37,11 +37,23 @@ public class PlayerCollision : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        if (collision.collider.tag == "Boundaries")
+        // If collision is detected with boundaries and Wraparound is disabled, end game.
+        if (collision.collider.tag == "Boundaries" && !Input.GetButton("Wraparound"))
         {
             Destroy(bottomBoundary);
             Destroy(topBoundary);
             FindObjectOfType<GameManager>().EndGame();
+        }
+
+        //If collision is detected with boundaries and Wraparound is enabled, wrap to other side.
+        if (collision.collider.tag == "Boundaries" && Input.GetButton("Wraparound"))
+        {
+            //Wrap to bottom if gravity inverted
+            if (playerMovement.isGravityInverted)
+                player.transform.position = new Vector3(player.transform.position.x, bottomBoundary.transform.position.y, player.transform.position.z);
+            //Wrap to top if gravity normal.
+            else
+                player.transform.position = new Vector3(player.transform.position.x, topBoundary.transform.position.y, player.transform.position.z);
         }
 
         //If enemy collision happens and invert kill deactivated
