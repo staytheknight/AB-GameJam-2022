@@ -218,12 +218,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dafb9a3553a5440aeba5bc6119f769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicToggle: {fileID: 0}
   controller: {fileID: 3912954754204274655}
   playerMovement: {fileID: 3912954754204274654}
   player: {fileID: 3912954755415101088}
-  boundary: {fileID: 0}
+  bottomBoundary: {fileID: 0}
+  topBoundary: {fileID: 0}
   rangeMin: -300
   rangeMax: 300
+  playerTransform: {fileID: 3912954754204274658}
 --- !u!114 &3912954754204274653
 MonoBehaviour:
   m_ObjectHideFlags: 0

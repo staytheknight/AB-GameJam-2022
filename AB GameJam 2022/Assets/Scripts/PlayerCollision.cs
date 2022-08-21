@@ -16,6 +16,19 @@ public class PlayerCollision : MonoBehaviour
     public float rangeMin = -400f;
     public float rangeMax = 400f;
 
+    // Variables used to add spin force to character upon fail
+    [SerializeField] public Transform playerTransform;
+    Vector3 rotVector;
+    float rotAmount;
+
+    private void Start()
+    {   
+        // Initializes rotation vector
+        playerTransform.eulerAngles = rotVector;
+        // Selects random value for rotation in range of 60 degrees
+        rotAmount = Random.Range(-60f, 60f);
+    }
+
     private void Update()
     {
         if (playerMovement.isGravityInverted)
@@ -85,12 +98,17 @@ public class PlayerCollision : MonoBehaviour
         
     }
 
+    // Launches player
     void PlayerLaunch()
     {
-        // Launches player
+        // Disable controller scripts so player can't control flight
         controller.enabled = false;
         playerMovement.enabled = false;
+
+        //Removes z axis rotation restrictions
+        player.constraints = RigidbodyConstraints2D.None;
         Vector2 launchVector = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  
-        player.AddForce(launchVector);        
+        player.AddForce(launchVector);
+        playerTransform.Rotate(0, 0, 30f);          // Rotates character
     }
 }
