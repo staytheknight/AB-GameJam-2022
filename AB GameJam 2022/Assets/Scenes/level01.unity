@@ -1780,6 +1780,8 @@ MonoBehaviour:
   restartDelay: 0.8
   completeLevelUI: {fileID: 776921500}
   failedLevelUI: {fileID: 1937754938}
+  switchKillOnIcon: {fileID: 0}
+  switchKillOffIcon: {fileID: 0}
 --- !u!4 &608546899
 Transform:
   m_ObjectHideFlags: 0

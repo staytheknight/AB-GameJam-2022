@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 6936746180871440590}
   - component: {fileID: 6936746180871440589}
   - component: {fileID: 6936746180871440588}
+  - component: {fileID: 8485114836236271594}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -461,6 +462,21 @@ MonoBehaviour:
   controller: {fileID: 6936746180871440589}
   switchTime: 120
   horizontalMove: 20
+--- !u!114 &8485114836236271594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936746180871440587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff1e638884fb304ca4bc57d427cee13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightMusic: {fileID: 6936746182234650003}
+  leftMusic: {fileID: 6936746180830708975}
+  topMusic: {fileID: 5308524173640497548}
 --- !u!1 &6936746181389181365
 GameObject:
   m_ObjectHideFlags: 0
