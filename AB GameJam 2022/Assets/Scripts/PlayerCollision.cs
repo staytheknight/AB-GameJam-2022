@@ -26,7 +26,8 @@ public class PlayerCollision : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
         }
 
-        if (collision.collider.tag == "Enemy")
+        //If enemy collision happens and invert kill deactivated
+        if (collision.collider.tag == "Enemy" && !Input.GetButton("InvertKill"))
         {
             // Launches player
             //controller.enabled = false;
@@ -35,6 +36,13 @@ public class PlayerCollision : MonoBehaviour
             //player.AddForce(transform.position * thrust);
             
             FindObjectOfType<GameManager>().EndGame();
+        }
+        //If enemy collision happens and invert kill activated
+        else if (collision.collider.tag == "Enemy" && Input.GetButton("InvertKill"))
+        {
+        //Get collided enemy game object and destroy it.
+            GameObject enemy = collision.collider.gameObject;
+            Destroy(enemy);
         }
     }
 }
