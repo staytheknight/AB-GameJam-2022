@@ -99,14 +99,20 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.collider.tag == "EtherealPlatform")
         {
-            Debug.Log("Got Eeeeeem");
             powerUps.hasEtherealPower = true;
             GameObject power = collision.collider.gameObject;
             Destroy(power);
         }
 
+        if (collision.collider.tag == "InvertKill")
+        {
+            powerUps.hasInvertKillPower = true;
+            GameObject power = collision.collider.gameObject;
+            Destroy(power);
+        }
 
-        
+
+
     }
 
         // Launches player
