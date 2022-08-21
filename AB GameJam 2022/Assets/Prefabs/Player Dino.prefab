@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3912954754204274655}
   - component: {fileID: 3912954754204274652}
   - component: {fileID: 3912954754204274653}
+  - component: {fileID: -4690855094858096031}
   m_Layer: 3
   m_Name: Player Dino
   m_TagString: Player
@@ -221,6 +222,7 @@ MonoBehaviour:
   musicToggle: {fileID: 0}
   controller: {fileID: 3912954754204274655}
   playerMovement: {fileID: 3912954754204274654}
+  powerUps: {fileID: 0}
   player: {fileID: 3912954755415101088}
   bottomBoundary: {fileID: 0}
   topBoundary: {fileID: 0}
@@ -239,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa8894af50532b48875afabcd1fe6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUps: {fileID: 0}
   gTilemap: {fileID: 0}
   gCollider: {fileID: 0}
   iTilemap: {fileID: 0}
@@ -247,6 +250,22 @@ MonoBehaviour:
   dCollider: {fileID: 0}
   onIcon: {fileID: 0}
   offIcon: {fileID: 0}
+--- !u!114 &-4690855094858096031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3912954754204274650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0caeee8b2cc1eba46a8a1abed1ccf181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasEtherealPower: 0
+  hasInvertKillPower: 0
+  hasWraparoundPower: 0
+  hasGravityPower: 0
 --- !u!1 &3912954754405442281
 GameObject:
   m_ObjectHideFlags: 0

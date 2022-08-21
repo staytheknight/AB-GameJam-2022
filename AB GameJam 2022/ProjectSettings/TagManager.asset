@@ -10,6 +10,7 @@ TagManager:
   - Movement Restrictors
   - Interactables
   - Goals
+  - EtherealPlatform
   layers:
   - Default
   - TransparentFX
