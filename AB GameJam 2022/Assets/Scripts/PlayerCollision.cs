@@ -25,8 +25,7 @@ public class PlayerCollision : MonoBehaviour
     {   
         // Initializes rotation vector
         playerTransform.eulerAngles = rotVector;
-        // Selects random value for rotation in range of 60 degrees
-        rotAmount = Random.Range(-60f, 60f);
+        
     }
 
     private void Update()
@@ -99,16 +98,27 @@ public class PlayerCollision : MonoBehaviour
     }
 
     // Launches player
-    void PlayerLaunch()
+    public void PlayerLaunch()
     {
         // Disable controller scripts so player can't control flight
         controller.enabled = false;
         playerMovement.enabled = false;
 
+        // Selects random value for rotation in range of 60 degrees
+        rotAmount = Random.Range(30f, 90f);
+
+        // Function to randomly select if the rotation is negative or not
+        // This is to have the rotation picked be between -90 to -30 and 30 to 90 degrees
+        int invertRot = Random.Range(0, 1);
+        if (invertRot == 1)
+        {
+            rotAmount = -rotAmount;
+        }
+
         //Removes z axis rotation restrictions
         player.constraints = RigidbodyConstraints2D.None;
         Vector2 launchVector = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  
         player.AddForce(launchVector);
-        playerTransform.Rotate(0, 0, 30f);          // Rotates character
+        playerTransform.Rotate(0, 0, rotAmount);          // Rotates character
     }
 }

@@ -38,6 +38,7 @@ public class EnemySquish : MonoBehaviour
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
             FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<PlayerCollision>().PlayerLaunch();
         }
     }
 
