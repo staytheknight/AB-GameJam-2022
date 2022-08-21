@@ -9,32 +9,38 @@ public class PlayerCollision : MonoBehaviour
     public CharacterController2D controller;
     public PlayerMovement playerMovement;
     public Rigidbody2D player;
-    public float thrust = 20f;
-    public float rangeMin = -50f;
-    public float rangeMax = 50f;
+    public GameObject boundary;
+    public float rangeMin = -400f;
+    public float rangeMax = 400f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         // If collision is detected between player dangers or boundaries end the game
         if(collision.collider.tag == "Dangers")
         {
+            PlayerLaunch();
             FindObjectOfType<GameManager>().EndGame();
         }
 
         if (collision.collider.tag == "Boundaries")
         {
+            Destroy(boundary);
             FindObjectOfType<GameManager>().EndGame();
         }
 
         if (collision.collider.tag == "Enemy")
         {
-            // Launches player
-            //controller.enabled = false;
-            //playerMovement.enabled = false;
-            transform.position = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  // THIS LINE IS CAUSING ISSUES
-            //player.AddForce(transform.position * thrust);
-            
+            PlayerLaunch();
             FindObjectOfType<GameManager>().EndGame();
         }
+    }
+
+    void PlayerLaunch()
+    {
+        // Launches player
+        controller.enabled = false;
+        playerMovement.enabled = false;
+        Vector2 launchVector = new Vector2(Random.Range(rangeMin, rangeMax), Random.Range(0, rangeMax));  // THIS LINE IS CAUSING ISSUES
+        player.AddForce(launchVector);        
     }
 }
