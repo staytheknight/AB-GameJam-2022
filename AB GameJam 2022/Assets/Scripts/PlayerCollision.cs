@@ -10,6 +10,7 @@ public class PlayerCollision : MonoBehaviour
     // Used to move the player upon fail
     public CharacterController2D controller;
     public PlayerMovement playerMovement;
+    public PowerUps powerUps;
     public Rigidbody2D player;
     public GameObject bottomBoundary;
     public GameObject topBoundary;
@@ -27,6 +28,8 @@ public class PlayerCollision : MonoBehaviour
         playerTransform.eulerAngles = rotVector;
         // Selects random value for rotation in range of 60 degrees
         rotAmount = Random.Range(-60f, 60f);
+        powerUps = FindObjectOfType<PowerUps>();
+
     }
 
     private void Update()
@@ -94,12 +97,20 @@ public class PlayerCollision : MonoBehaviour
 
         }
 
+        if (collision.collider.tag == "EtherealPlatform")
+        {
+            Debug.Log("Got Eeeeeem");
+            powerUps.hasEtherealPower = true;
+            GameObject power = collision.collider.gameObject;
+            Destroy(power);
+        }
+
 
         
     }
 
-    // Launches player
-    void PlayerLaunch()
+        // Launches player
+        void PlayerLaunch()
     {
         // Disable controller scripts so player can't control flight
         controller.enabled = false;

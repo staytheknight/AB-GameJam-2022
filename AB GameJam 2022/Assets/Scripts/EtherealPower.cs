@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class EtherealPower : MonoBehaviour
 {
-
+    public PowerUps powerUps;
     bool etherealOn = false;
     [SerializeField] Tilemap gTilemap;
     [SerializeField] Collider2D gCollider;
@@ -25,12 +25,13 @@ public class EtherealPower : MonoBehaviour
 
         // Can possibly do it with FindObjectsWithTags or something like that
         // Maybe FindObjectsOfType, but there are other objects with the same type as Tilemap_Dangers & Tilemap_Interactables
+        powerUps = FindObjectOfType<PowerUps>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("EtherealPower"))
+        if (Input.GetButton("EtherealPower") && powerUps.hasEtherealPower)
         {
             //When button pressed and held, colliders disabled.
             iCollider.enabled = false;
@@ -66,15 +67,20 @@ public class EtherealPower : MonoBehaviour
             etherealOn = false;
         }
 
-        if(etherealOn){
+        if(etherealOn && powerUps.hasEtherealPower){
 
             onIcon.SetActive(true);
             offIcon.SetActive(false);
 
-        } else {
+        } else if (!etherealOn && powerUps.hasEtherealPower) {
 
             onIcon.SetActive(false);
             offIcon.SetActive(true);
+        }
+        else
+        {
+            onIcon.SetActive(false);
+            offIcon.SetActive(false);
         }
     }
 }
