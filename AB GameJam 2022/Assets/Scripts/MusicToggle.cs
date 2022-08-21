@@ -9,16 +9,22 @@ public class MusicToggle : MonoBehaviour
     [SerializeField] GameObject leftMusic;
     [SerializeField] GameObject topMusic;
     [SerializeField] public bool invertedEnemy;
+    private PowerUps powerUps;
+
+    void Start()
+    {
+        powerUps = FindObjectOfType<PowerUps>();
+    }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetButtonDown("InvertKill"))
+        if (Input.GetButtonDown("InvertKill") && powerUps.hasInvertKillPower)
         {
             invertedEnemy = !invertedEnemy;
         }
-        if (Input.GetButtonUp("InvertKill"))
+        if (Input.GetButtonUp("InvertKill") && powerUps.hasInvertKillPower)
         {
             invertedEnemy = !invertedEnemy;
         }

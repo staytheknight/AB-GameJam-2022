@@ -11,6 +11,9 @@ TagManager:
   - Interactables
   - Goals
   - EtherealPlatform
+  - InvertKill
+  - Wraparound
+  - InvertGravity
   layers:
   - Default
   - TransparentFX

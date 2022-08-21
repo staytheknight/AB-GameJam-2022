@@ -11,10 +11,17 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 0.1f;
 
     public GameObject completeLevelUI;              // reference to the complete game object UI
-    public GameObject failedLevelUI;                
+    public GameObject failedLevelUI;
+
+    private PowerUps powerUps;
 
     [SerializeField] GameObject switchKillOnIcon;
     [SerializeField] GameObject switchKillOffIcon;
+
+    void Start()
+    {
+        powerUps = FindObjectOfType<PowerUps>();
+    }
 
     // Method for when current level is failed
     public void EndGame()
@@ -45,16 +52,21 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         if (!levelOne) { // If it's not level 1 use this 
-            if (Input.GetButton("InvertKill"))
+            if (Input.GetButton("InvertKill") && powerUps.hasInvertKillPower)
             {
                 switchKillOnIcon.SetActive(true);
                 switchKillOffIcon.SetActive(false);
 
             }
-            else
+            else if (powerUps.hasInvertKillPower)
             {
                 switchKillOnIcon.SetActive(false);
                 switchKillOffIcon.SetActive(true);
+            }
+            else
+            {
+                switchKillOnIcon.SetActive(false);
+                switchKillOffIcon.SetActive(false);
             }
         }
         
