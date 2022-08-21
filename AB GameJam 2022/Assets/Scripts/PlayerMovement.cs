@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour {
 		//If Gravity invert has been toggled, gravity is currently normal, gravity has not yet been updated this frame, and character is on the floor, invert gravity.
 		if (Input.GetButtonDown("InvertGravity") && isGravityInverted == false && gravityUpdatedThisFrame == false && m_CharacterController2D.m_Grounded == true)
         {
-			Debug.Log("Beginning Invert Gravity");
 			isGravityInverted = true;
 			gravityUpdatedThisFrame = true;
 		}
