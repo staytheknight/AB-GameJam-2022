@@ -1435,7 +1435,8 @@ MonoBehaviour:
   controller: {fileID: 204067428}
   playerMovement: {fileID: 204067427}
   player: {fileID: 204067425}
-  boundary: {fileID: 1193877367}
+  bottomBoundary: {fileID: 1193877367}
+  topBoundary: {fileID: 212466646}
   rangeMin: -300
   rangeMax: 300
 --- !u!114 &204067431
@@ -1484,7 +1485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212466646}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.1324, y: 4.905, z: 0}
+  m_LocalPosition: {x: 0.132, y: 5.656, z: 0}
   m_LocalScale: {x: 0.20000002, y: 22.054483, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1533,7 +1534,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3119,6 +3120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99651e74596080744b52e422830514bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelOne: 0
   restartDelay: 0.8
   completeLevelUI: {fileID: 776921500}
   failedLevelUI: {fileID: 1937754938}
