@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
-    bool switchKill = false;
     public bool levelOne = false;                   // Bandaid patch to toggle if the manager is on the first level or not
 
     public float restartDelay = 0.1f;
