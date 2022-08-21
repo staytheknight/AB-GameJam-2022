@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dafb9a3553a5440aeba5bc6119f769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicToggle: {fileID: 0}
   controller: {fileID: 204067428}
   playerMovement: {fileID: 204067427}
   player: {fileID: 204067425}

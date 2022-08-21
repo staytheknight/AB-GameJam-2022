@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
 
+    public MusicToggle musicToggle;
+
     // Used to move the player upon fail
     public CharacterController2D controller;
     public PlayerMovement playerMovement;
@@ -44,6 +46,7 @@ public class PlayerCollision : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
         }
 
+        /* OLD CODE FOR INVERT KILL -- USES BUTTONS INSTEAD OF TOGGLE -- KEPT JUST IN CASE
         //If enemy collision happens and invert kill deactivated
         if (collision.collider.tag == "Enemy" && !Input.GetButton("InvertKill"))
         {
@@ -56,7 +59,31 @@ public class PlayerCollision : MonoBehaviour
         //Get collided enemy game object and destroy it.
             GameObject enemy = collision.collider.gameObject;
             Destroy(enemy);
+        }*/
+
+        if (collision.collider.tag == "Enemy")
+        {   
+            // Get the musicToggle script from the object collided with
+            musicToggle = collision.gameObject.GetComponent<MusicToggle>();
+
+            // If the script has inverted enemy tag set to false
+            if (!musicToggle.invertedEnemy)
+            {
+                PlayerLaunch();
+                FindObjectOfType<GameManager>().EndGame();
+            }
+            // If the script has inverted enemy tag set to true
+            else if (musicToggle.invertedEnemy)
+            {
+                //Get collided enemy game object and destroy it.
+                GameObject enemy = collision.collider.gameObject;
+                Destroy(enemy);
+            }
+
         }
+
+
+        
     }
 
     void PlayerLaunch()

@@ -8,7 +8,7 @@ public class MusicToggle : MonoBehaviour
     [SerializeField] GameObject rightMusic;
     [SerializeField] GameObject leftMusic;
     [SerializeField] GameObject topMusic;
-    [SerializeField] bool invertedEnemy;
+    [SerializeField] public bool invertedEnemy;
 
     // Update is called once per frame
     void Update()

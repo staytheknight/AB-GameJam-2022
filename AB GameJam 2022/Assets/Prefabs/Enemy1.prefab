@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6936746180395554364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.015859, y: 0.293, z: 0}
+  m_LocalPosition: {x: -0.015859, y: 0.321, z: 0}
   m_LocalScale: {x: 1.0390625, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b1f980ebf576145b3553948122d309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicToggle: {fileID: 8485114836236271594}
   rb2d: {fileID: 3912954755415101088, guid: 451998aac2479ae4fa8a9efce58f0ad5, type: 3}
   jumpForce: 300
 --- !u!1 &6936746180830708975
