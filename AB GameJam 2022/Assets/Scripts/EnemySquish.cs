@@ -21,6 +21,7 @@ public class EnemySquish : MonoBehaviour
         //If collision is detected between player and enemy and Invert Kill activated, kill player.
         else if (collision.collider.tag == "Player" && Input.GetButton("InvertKill"))
         {
+            rb2d.AddForce(new Vector2(0f, jumpForce));
             FindObjectOfType<GameManager>().EndGame();
         }
     }
